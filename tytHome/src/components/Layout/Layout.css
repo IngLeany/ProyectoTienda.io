@@ -1,0 +1,10 @@
+.texto {
+  font-family: serif; 
+  text-align: center; 
+}
+
+.texto h1 {
+  font-size: 4.3rem;
+  color: #080808; 
+  margin-bottom: 0.5em; 
+}

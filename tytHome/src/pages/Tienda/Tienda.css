@@ -1,0 +1,75 @@
+.tienda-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .tienda-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+
+  .productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .producto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+
+  .producto-imagen {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .producto-nombre {
+    margin: 10px 0;
+  }
+  
+
+  .producto-precio {
+    font-weight: bold;
+  }
+  
+
+  .producto-tallas {
+    margin-top: 10px;
+  }
+  
+  .producto-tallas-label {
+    margin-right: 10px;
+  }
+  
+  .producto-tallas-select {
+    padding: 5px;
+  }
+  
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .page-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-button:hover {
+    background-color: #0056b3;
+  }
+  

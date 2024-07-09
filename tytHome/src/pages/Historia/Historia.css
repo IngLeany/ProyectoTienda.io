@@ -1,0 +1,66 @@
+/* Historia.css */
+
+/* Estilos para el video */
+.video-container {
+  width: 100%;
+  max-width: 1000px; /* Ancho máximo del contenedor del video */
+  margin: 0 auto; /* Centra el contenedor del video horizontalmente */
+  text-align: center; /* Alinea el video en el centro */
+}
+
+.video-container video {
+  width: 100%; /* Video ocupa todo el ancho del contenedor */
+  height: auto; /* Ajusta automáticamente la altura según el ancho */
+  display: block; /* Para asegurar que el video tenga su propio espacio */
+  max-width: 100%; /* Asegura que el video no se estire más allá de su tamaño natural */
+}
+
+/* Estilos para la sección de marcas */
+.site-section.border-bottom {
+  padding: 60px 0; /* Espacio interno superior e inferior */
+}
+
+.site-section.border-bottom .container {
+  text-align: center; /* Centra el contenido del contenedor */
+}
+
+.site-section.border-bottom .site-section-heading.text-center {
+  margin-bottom: 50px; /* Espacio inferior entre el título y los elementos */
+}
+
+.block-38 {
+  margin-bottom: 30px; /* Espacio inferior entre cada bloque de marca */
+}
+
+.block-38 .block-38-img {
+  border: 1px solid #ccc; /* Borde alrededor de cada bloque */
+  padding: 20px; /* Espacio interno dentro del bloque */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.block-38-header {
+  margin-bottom: 20px; /* Espacio inferior entre el encabezado y el cuerpo */
+}
+
+.block-38-heading {
+  font-size: 20px; /* Tamaño de la fuente del título */
+  margin-bottom: 10px; /* Espacio inferior del título */
+}
+
+.block-38-subheading {
+  color: #888; /* Color del subtitulo */
+  font-size: 16px; /* Tamaño de la fuente del subtitulo */
+  margin-bottom: 0; /* Sin espacio inferior para el subtitulo */
+}
+
+.block-38-body {
+  font-size: 16px; /* Tamaño de la fuente del cuerpo del bloque */
+}
+
+/* Estilos responsivos para columnas */
+@media (max-width: 767px) {
+  .col-md-6 {
+    margin-bottom: 30px; /* Espacio inferior entre columnas en dispositivos pequeños */
+  }
+}

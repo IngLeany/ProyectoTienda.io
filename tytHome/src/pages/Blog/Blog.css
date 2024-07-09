@@ -1,0 +1,66 @@
+/* blog.css */
+
+/* Estilos para la sección principal */
+.site-wrap {
+    padding: 20px;
+  }
+  
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  
+  .text-black {
+    color: #000000;
+  }
+  
+  /* Estilos para la imagen principal */
+  .block-16 {
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .block-16 figure {
+    position: relative;
+  }
+  
+  .block-16 figure img {
+    width: 100%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  /* Estilos para las marcas */
+  .block-38 {
+    margin-bottom: 30px;
+  }
+  
+  .block-38-img {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .block-38-img img {
+    width: 100%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  .block-38-heading {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .block-38-subheading {
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 20px;
+  }
+  
+  .block-38-body {
+    padding: 20px;
+  }
+  

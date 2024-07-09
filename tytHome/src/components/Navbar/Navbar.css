@@ -1,0 +1,146 @@
+.navbar {
+  background-color: #ffffff;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+.nav-item {
+  position: relative;
+  margin-right: 20px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #111110;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+  width: 250px;
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdown-item:hover .dropdown {
+  display: block;
+  transform: scaleY(1);
+  color: #141413;
+}
+
+.dropdown h6 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.dropdown li {
+  margin-bottom: 8px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  margin-right: 10px;
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #1a1916;
+}
+
+.nav-icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.nav-icon-button:hover {
+  color: #1a1917;
+}
+
+.logo {
+  width: 900%; 
+  max-width: 300px; 
+  height: auto; 
+  display: block;
+  margin: 0 auto; 
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px; /* Reduce el padding para dispositivos móviles */
+  }
+
+  .container {
+    flex-direction: column; /* Cambia a diseño de columna */
+    align-items: stretch; /* Estira los elementos */
+  }
+
+  .navbar-nav {
+    flex-direction: column; /* Muestra los elementos en columna */
+    align-items: stretch; /* Estira los elementos */
+  }
+
+  .nav-item {
+    margin-right: 0; /* Elimina el margen derecho en dispositivos móviles */
+    margin-bottom: 10px; /* Añade un espacio entre elementos */
+  }
+
+  .nav-link {
+    padding: 10px 20px; /* Aumenta el padding horizontal */
+    text-align: center; /* Centra el texto */
+  }
+
+  .dropdown {
+    position: static; /* Cambia a posición estática */
+    width: auto; /* Ancho automático */
+    transform: scaleY(1); /* Muestra el dropdown */
+    box-shadow: none; /* Elimina la sombra */
+    padding: 0; /* Elimina el padding */
+  }
+
+  .dropdown-item:hover .dropdown {
+    display: block; /* Oculta el dropdown en hover en móviles */
+  }
+}

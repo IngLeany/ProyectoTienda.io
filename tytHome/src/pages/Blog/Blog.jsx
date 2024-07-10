@@ -8,7 +8,7 @@ import ika from "../../assets/images/ika.png";
 import rebeca from "../../assets/images/rebeca.png";
 import tythome from "../../assets/images/tythome.png";
 
-const Blog = () => {
+export const Blog = () => {
   return (
     <>
       <Navbar />
@@ -137,4 +137,3 @@ const Blog = () => {
   );
 };
 
-export default Blog;

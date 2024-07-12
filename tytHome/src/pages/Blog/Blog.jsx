@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { FooterHome } from "../../components/FooterHome/FooterHome";
 import "./Blog.css";
-import fachadatienda from "../../assets/images/fachadatienda.jpg";
+import Videotythome from "../../assets/videos/Videotythome.mp4";;
 import cloto from "../../assets/images/cloto.png";
 import ika from "../../assets/images/ika.png";
 import rebeca from "../../assets/images/rebeca.png";
@@ -32,11 +32,9 @@ export const Blog = () => {
               <div className="col-md-6">
                 <div className="block-16">
                   <figure>
-                    <img
-                      src={fachadatienda}
-                      alt="Image placeholder"
-                      className="img-fluid rounded"
-                    />
+                  <video autoPlay controls>
+                  <source src={Videotythome} type="video/mp4" />
+                   </video>
                   </figure>
                 </div>
               </div>

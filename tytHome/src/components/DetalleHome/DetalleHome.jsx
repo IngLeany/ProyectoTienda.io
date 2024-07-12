@@ -11,7 +11,7 @@ export const DetalleHome = () => {
       </div>
    <img src={banner} alt="logo" style={{ width: '100%' }} />
     <div className="banner-text">
-    <a href="/Tienda" className="banner-button">Tienda</a>
+    <Link to={`/Tienda`} className='banner-button'>Tienda</Link>
     </div>
     <Outlet></Outlet>
   </div>

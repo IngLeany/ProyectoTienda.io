@@ -4,14 +4,37 @@ import logotythome from "../../assets/images/logotythome.png";
 import {Outlet, Link} from "react-router-dom";
 
 export const Navbar = () => {
+ const [searchTerm, setSearchTerm] = useState('');
+  const [filteredProductos, setFilteredProductos] = useState([]);
+
+  const handleSearch = () => {
+    axios.get(`http://localhost:3000/api/productos`, {
+      params: {
+        nombre: searchTerm
+        // Para añadir otros parámetros como precioMin y precioMax si los necesitas
+      }
+    })
+    .then(response => {
+      console.log(response.data);
+      setFilteredProducts(response.data); // Actualiza el estado con los productos filtrados
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  };
 
   return (
-    <>
-      <nav className="navbar">
+    <>  
+      <nav className="navbar">  
         <div className="container">
-          <button className="nav-icon-button">
-            <FaSearch />
-          </button>
+          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="Buscar productos..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
           <ul className="navbar-nav">
             <li className="nav-item dropdown-item">
             <a href="/" className="nav-link">

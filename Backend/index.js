@@ -10,6 +10,7 @@ const productos = [
     price: 98.9,
     image: "",
     tallas: ["S", "M", "L", "XL"],
+    categoria: "IKA - Swimsuits",
   },
 
   {
@@ -18,6 +19,7 @@ const productos = [
     price: 119.7,
     image: "",
     tallas: ["S", "M", "L", "XL"],
+    categoria: "IKA - Swimsuits",
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const productos = [
     price: 98.5,
     image: "",
     tallas: ["S", "M", "L", "XL"],
+    categoria: "IKA - Swimsuits",
   },
   {
     id: 4,
@@ -32,11 +35,13 @@ const productos = [
     price: 98.9,
     image: "",
     tallas: ["S", "M", "L", "XL"],
+    categoria: "IKA - Swimsuits",
   },
   { id: 5, 
     name: "Pareo 5",
     price: 185.9, 
-    image: ""
+    image: "",
+    categoria: "IKA - Swimsuits",
      },
   {
     id: 6,
@@ -44,13 +49,37 @@ const productos = [
     price: 98.5,
     Image: "",
     tallas: ["S", "M", "L", "XL"],
+    categoria: "IKA - Swimsuits",
   },
 ];
 
 app.use(cors());
 
 app.get("/api/productos", (req, res) => {
-  res.json(productos);
+  const { nombre, precioMin, precioMax } = req.query;
+
+  // Aplicar filtros según los parámetros recibidos
+  let productosFiltrados = productos;
+
+  if (nombre) {
+    productosFiltrados = productosFiltrados.filter(
+      producto => producto.name.toLowerCase().includes(nombre.toLowerCase())
+    );
+  }
+
+  if (precioMin) {
+    productosFiltrados = productosFiltrados.filter(
+      producto => producto.price >= parseFloat(precioMin)
+    );
+  }
+
+  if (precioMax) {
+    productosFiltrados = productosFiltrados.filter(
+      producto => producto.price <= parseFloat(precioMax)
+    );
+  }
+
+  res.json(productosFiltrados);
 });
 
 app.use("/", express.static("tytHome"));
@@ -59,7 +88,3 @@ app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
 
-
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
-});

@@ -10,7 +10,17 @@ export const Tienda = () => {
   return (
     <>
       <Navbar />
-
+<div className="bg-light py-3">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 mb-0">
+                <a href="/">Inicio</a> <span className="mx-2 mb-0">/</span>
+                <strong className="text-black">Historia</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      
 <div className="producto">
     <img src={vestidodebaño1} alt="Producto"/>
     <div className="producto-info">

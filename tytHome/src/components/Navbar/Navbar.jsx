@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {FaSearch, FaFacebook, FaWhatsapp, FaInstagram, FaTiktok,} from "react-icons/fa";
 import "./Navbar.css";
 import logotythome from "../../assets/images/logotythome.png";

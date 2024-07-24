@@ -1,134 +1,17 @@
-/* Estilos generales para el componente Historia */
-
-.site-wrap {
-  background-color: #f7f7f7; /* Color de fondo general */
-  padding: 20px 0; /* Espaciado interno */
-}
-
-/* Estilos para la sección de navegación superior */
-.bg-light {
-  background-color: #ffffff; /* Fondo claro */
-  border-bottom: 1px solid #e5e5e5; /* Borde inferior */
-  padding: 10px 0; /* Espaciado interno */
-}
-
-/* Estilos para los enlaces de navegación */
-.container {
-  max-width: 1200px; /* Ancho máximo del contenido */
-  margin: 0 auto; /* Centrado horizontal */
-}
-
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.col-md-12 {
-  flex: 0 0 100%;
-  max-width: 100%;
-}
-
-.text-black {
-  color: #333333; /* Color de texto oscuro */
-}
-
-/* Estilos para la sección de presentación de video */
-.site-section {
-  padding: 60px 0; /* Espaciado interno */
-}
-
-.block-16 {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px; /* Bordes redondeados */
-}
-
-.block-16 figure {
+.site-wrap{
   margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.block-16 video {
+.fullscreen-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover; /* Ajusta el video para cubrir toda la pantalla */
+  z-index: -1; /* Asegura que el video esté detrás de otros elementos si los hay */
 }
-
-/* Estilos para la sección de marcas */
-.site-section-border-bottom {
-  padding: 40px 0; /* Espaciado interno */
-  border-bottom: 1px solid #e5e5e5; /* Borde inferior */
-}
-
-.site-section-heading {
-  margin-bottom: 30px; /* Espaciado inferior */
-  text-align: center; /* Centrado de texto */
-}
-
-/* Estilos para los bloques de cada marca */
-.block-38 {
-  margin-bottom: 30px; /* Espaciado inferior */
-}
-
-.block-38-img {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Sombra */
-}
-
-.block-38-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease; /* Transición suave */
-}
-
-.block-38-header {
-  padding: 20px;
-  background-color: #ffffff; /* Fondo claro */
-}
-
-.block-38-heading {
-  font-size: 20px; /* Tamaño de fuente */
-  margin-bottom: 10px; /* Espaciado inferior */
-}
-
-.block-38-subheading {
-  font-size: 16px; /* Tamaño de fuente */
-  color: #888888; /* Color de texto gris */
-  margin-bottom: 20px; /* Espaciado inferior */
-}
-
-.block-38-body {
-  padding: 20px; /* Espaciado interno */
-  background-color: #ffffff; /* Fondo claro */
-}
-
-.block-38-body p {
-  font-size: 14px; /* Tamaño de fuente */
-  line-height: 1.6; /* Altura de línea */
-  color: #555555; /* Color de texto gris oscuro */
-}
-
-/* Estilos específicos para las imágenes de las marcas */
-.block-38-img img {
-  border-radius: 10px; /* Bordes redondeados */
-}
-
-/* Estilos para el pie de página */
-.social-icons {
-  text-align: center; /* Centrado de texto */
-  margin-top: 20px; /* Espaciado superior */
-}
-
-.social-icons a {
-  display: inline-block;
-  margin: 0 10px; /* Margen entre iconos */
-  font-size: 24px; /* Tamaño de fuente */
-  color: #333333; /* Color de icono */
-}
-
-.social-icons a:hover {
-  color: #007bff; /* Color de icono al pasar el ratón */
-}
-

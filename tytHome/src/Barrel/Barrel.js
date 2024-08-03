@@ -26,7 +26,8 @@ import pijama3 from "../assets/images/pijama3.png";
 import batola from "../assets/images/batola.png";
 import kimono from "../assets/images/kimono.png";
 import batola2 from "../assets/images/batola2.png";
-
+import fotoS from "../assets/images/fotoS.jpeg";
+import fotoP from "../assets/images/fotoP.jpeg";
 
 const imagenes = {
     vestidodebañodospiezas: vestidodebañodospiezas,
@@ -57,7 +58,9 @@ const imagenes = {
     batola: batola,
     kimono: kimono,
     batola2: batola2,
-
+    fotoS: fotoS,
+    fotoP: fotoP
+    
 };
 
 export default imagenes;

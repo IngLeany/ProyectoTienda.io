@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "./DetalleHome.css"
 import banner from '../../assets/images/banner.png'; 
 import { Outlet } from 'react-router-dom';
+
 
 export const DetalleHome = () => {
   return (

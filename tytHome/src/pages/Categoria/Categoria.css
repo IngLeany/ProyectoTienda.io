@@ -1,0 +1,54 @@
+.categoria {
+    padding: 20px;
+  }
+  
+  .categoria h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .categoria ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .categoria li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .categoria img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+  }
+  
+  .categoria .producto-info {
+    flex: 1;
+  }
+  
+  .categoria h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .categoria p {
+    margin: 5px 0;
+  }
+  
+  .categoria a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .categoria a:hover {
+    text-decoration: underline;
+  }
+  

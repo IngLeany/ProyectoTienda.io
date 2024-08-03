@@ -1,45 +1,90 @@
-/* Estilos para todas las imágenes dentro de la sección Blog */
-.col-md-5 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* Blog.css */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
-/* Establece un tamaño máximo para todas las imágenes */
+.site-wrap {
+  padding: 20px;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.text-black {
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Breadcrumbs */
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/* Heading */
+.site-section-heading {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.text-black {
+  color: #333;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Blog Content */
+.block-16 {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Image Styles */
 img {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin-bottom: 1.5rem;
 }
 
-/* Estilos específicos para las imágenes de las marcas */
-.block-38-img img {
-  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-  height: auto; /* Permite que la altura se ajuste automáticamente */
-  display: block; /* Asegura que las imágenes no tengan espacios debajo */
-  margin-bottom: 10px; /* Espacio entre las imágenes */
-}
-
-/* Alineación de las imágenes de las marcas */
-.block-38 {
-  display: flex; /* Activa el contenedor flex para alinear elementos */
-}
-
-/* Espaciado y estilos para el contenido debajo de las imágenes */
-.block-38-body {
-  padding: 1rem;
-  text-align: center; /* Centra el texto debajo de las imágenes */
-}
-
-/* Estilos generales para el contenido de las marcas */
-.block-38-heading {
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
   margin-top: 1rem;
-  font-size: 1.25rem;
 }
 
-.block-38-subheading {
-  font-size: 0.875rem;
-  color: #999;
+/* Footer */
+footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
 }
-

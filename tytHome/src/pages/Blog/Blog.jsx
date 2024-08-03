@@ -2,11 +2,8 @@ import React from "react";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { FooterHome } from "../../components/FooterHome/FooterHome";
 import "./Blog.css";
-import bannerblog from "../../assets/images/bannerblog.png";
-import cloto from "../../assets/images/cloto.png";
-import ika from "../../assets/images/ika.png";
-import rebeca from "../../assets/images/rebeca.png";
-import tythome from "../../assets/images/tythome.png";
+import imagenes from "../../Barrel/Barrel";
+
 
 export const Blog = () => {
   return (
@@ -47,13 +44,22 @@ export const Blog = () => {
                       <p>3. Sostenibilidad medioambiental.</p>
                       <p>4. Somos un estilo de vida.</p>
                     </div>
+                    <h1>IKA</h1>
                     <img
-                      src={bannerblog}
+                      src={imagenes.fotoS}
                       alt="Image placeholder"
                       className="mb-4"
                       
                     />
-                 
+                    <h1>CLOTO - REBECA</h1>
+                    <p></p>
+                       <img
+                      src={imagenes.fotoP}
+                      alt="Image placeholder"
+                      className="mb-4"
+                      
+                    />
+            
                 </div>
               </div>
             </div>
@@ -61,8 +67,6 @@ export const Blog = () => {
         </div>
         </div>
       
-     
-
       <FooterHome />
     </>
   );

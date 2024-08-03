@@ -25,7 +25,7 @@ export const Historia = () => {
           <div className="container" style={{ textAlign: "center" }}>
             <div className="row justify-content-center mb-5">
               <div className="col-md-7 site-section-heading text-center pt-4">
-                <h2 className="text-black">NUESTRA HISTORIA</h2>
+                <h2 className="text-black">PROCESO DE PARA LOGRAR LAS PRENDAS DE NUESTRA TIENDA</h2>
                 <video autoPlay controls>
                   <source src={videohistoria} type="video/mp4" />
                 </video>

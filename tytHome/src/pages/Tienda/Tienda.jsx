@@ -1,12 +1,15 @@
+//Tienda.jsx
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { FooterHome } from "../../components/FooterHome/FooterHome";
 import imagenes from "../../Barrel/Barrel";
-
 import "./Tienda.css";
 
 export const Tienda = () => {
+
+  
   const productos = [
     {
       id: 1,
@@ -17,6 +20,8 @@ export const Tienda = () => {
       imagen: imagenes.vestidodebañodospiezas,
       link: "/ShopSingle",
       categoria: "IKA(SWIMSUITS)",
+      coleccion: "Mixtura Tropical", 
+
     },
     {
       id: 2,
@@ -588,68 +593,43 @@ export const Tienda = () => {
           </div>
         </div>
       </div>
+      
       <div className="site-section">
         <div className="container">
           <div className="row mb-5" id="products-container">
-            {productos.map((producto, index) => (
+            {productos.map((producto) => (
               <div
-                key={index}
+                key={producto.id}
                 className="col-sm-6 col-lg-4 mb-4"
                 data-aos="fade-up"
               >
                 <div className="block-4 text-center border">
                   <figure className="block-4-image">
-                    <Link to={producto.link} />
-                    <img
-                      src={producto.imagen}
-                      alt="Imagen de producto"
-                      className="img-fluid"
-                    />
+                    <Link to={`/shop/${producto.id}`}>
+                      <img
+                        src={producto.imagen}
+                        alt="Imagen de producto"
+                        className="img-fluid"
+                      />
+                    </Link>
                   </figure>
                   <div className="block-4-text p-4">
                     <h3>
-                      <a href={producto.link}>{producto.nombre}</a>
+                      <Link to={`/shop/${producto.id}`}>{producto.nombre}</Link>
                     </h3>
                     <p className="mb-0">{producto.descripcion}</p>
                     <p className="text-secondary font-weight-bold">
                       Precio: {producto.precio}
                     </p>
-                    <p className="text-secondary font-weight-bold">
-                      precioUSD: {producto.precioUSD}
-                    </p>
+                    {producto.precioUSD && (
+                      <p className="text-secondary font-weight-bold">
+                        Precio USD: {producto.precioUSD}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-          <div className="row" data-aos="fade-up">
-            <div className="col-md-12 text-center">
-              <div className="site-block-27">
-                <ul>
-                  <li>
-                    <a href="#">&lt;</a>
-                  </li>
-                  <li className="active">
-                    <span>1</span>
-                  </li>
-                  <li>
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#">4</a>
-                  </li>
-                  <li>
-                    <a href="#">5</a>
-                  </li>
-                  <li>
-                    <a href="#">&gt;</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>

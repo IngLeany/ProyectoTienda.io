@@ -1,0 +1,42 @@
+
+/* Site Section Styling */
+.site-section {
+  padding: 3rem 0;
+  background-color: #f8f8f7;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.display-3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.btn-warning {
+  background-color: #f3d2a8; /* Color de fondo del botón */
+  color: #080808; /* Color del texto del botón */
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s; /* Transición suave para hover */
+}
+
+.btn-warning:hover {
+  background-color: #e0a800; /* Color de fondo del botón en hover */
+  color: #0a0a0a; /* Color del texto del botón en hover */
+}
+
+.btn-warning:focus, .btn-warning:active {
+  outline: none; /* Elimina el contorno en foco */
+  box-shadow: none; /* Elimina la sombra del contorno en foco */
+}

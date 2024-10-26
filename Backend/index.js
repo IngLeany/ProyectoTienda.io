@@ -1,610 +1,97 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const mysql = require('mysql');
+const cors = require('cors');
+const path = require('path');
 const app = express();
-const port = 3000;
+const port = 5000;
 
-const productos = [
-  {
-    id: 1,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas strapless",
-    precio: "$98.900",
-    precioUSD: "$0.024",
-    imagen: imagenes.vestidodebañodospiezas,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-    coleccion: "Mixtura Tropical", 
-
-  },
-  {
-    id: 2,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas con dorado",
-    precio: "$119.900",
-    imagen: imagenes.vestidodebañodospiezacondorado,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 3,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezass strapless",
-    precio: "$98.500",
-    imagen: imagenes.vestidodebañodospiezasstrapless,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 4,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas con moño",
-    precio: "$98.000",
-    imagen: imagenes.cuatro,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 5,
-    nombre: "Pareo",
-    precio: "$185.900",
-    imagen: imagenes.cuatro,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 6,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza",
-    precio: "$98.5oo",
-    imagen: imagenes.cinco,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 7,
-    nombre: "Pareo",
-    precio: "$185.000",
-    imagen: imagenes.cinco,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 8,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza strapless con dorado",
-    precio: "$85.900",
-    imagen: imagenes.seis,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 9,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza con dorado",
-    precio: "$98.500",
-    imagen: imagenes.siete,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 10,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza rojo con dorado",
-    precio: "$98.500",
-    imagen: imagenes.ocho,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 11,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón",
-    precio: "$130.000",
-    imagen: imagenes.nueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 12,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.nueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 13,
-    nombre: "Vestido",
-    descripcion: "Largo",
-    precio: "$80.000",
-    imagen: imagenes.diez,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 14,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón",
-    precio: "$130.900",
-    imagen: imagenes.once,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 15,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.doce,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 16,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón aladino",
-    precio: "$130.900",
-    imagen: imagenes.trece,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 17,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.catorce,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 18,
-    nombre: "Conjunto",
-    descripcion: "Croptop y falda",
-    precio: "$130.000",
-    imagen: imagenes.quince,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 19,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.diezyseis,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 20,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezysiete,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 21,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezyocho,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 22,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezynueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 23,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.veinte,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 24,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con short clásico",
-    precio: "$192.800",
-    imagen: imagenes.ventiuno,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 25,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con capri",
-    precio: "$196.800",
-    imagen: imagenes.veintidos,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 26,
-    nombre: "Pijama",
-    descripcion: "Camiseta manga larga con pantalón largo",
-    precio: "$214.800",
-    imagen: imagenes.pijama,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 27,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con pantalón largo",
-    precio: "$180.800",
-    imagen: imagenes.pijama1,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 28,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con short envolvente",
-    precio: "$192.800",
-    imagen: imagenes.pijama3,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 29,
-    nombre: "Kimono",
-    precio: "$170.800",
-    imagen: imagenes.kimono,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 30,
-    nombre: "Batola Básica",
-    precio: "$220.800",
-    imagen: imagenes.batola,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 31,
-    nombre: "Batola japonesa",
-    precio: "$193.800",
-    imagen: imagenes.batola2,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 32,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con pantalón clásico",
-    precio: "$175.800",
-    imagen: imagenes.pijamaotono,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-    colecciones: "Otoño"
-  },
-  {
-    id: 33,
-    nombre: "Batola",
-    descripcion: "básica",
-    precio: "$135.800",
-    imagen: imagenes.otonopijama,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-    colecciones: "Otono"
-  },
-  {
-    id: 34,
-    nombre: "Pijama niña",
-    descripcion: "blusa clásica con short clásico",
-    precio: "$65.8OO",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 35,
-    nombre: "Pijama niña",
-    descripcion: "Blusa clásica con short clásico",
-    precio: "$65.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 36,
-    nombre: "Pijama niña/niño",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$120.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 37,
-    nombre: "Pijama niña/niño",
-    descripcion: "camisa clásica con pantalón clásico",
-    precio: "$120.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 38,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con short",
-    precio: "$139.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 39,
-    nombre: "Pijama ",
-    descripcion: "Camisa básica con pantalón clásico ",
-    precio: "$145.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 40,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$152.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 41,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$152.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 42,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 43,
-    nombre: "Levantadora",
-    precio: "$111.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 44,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 45,
-    nombre: "Pijama hombre",
-    descripcion: "Camiseta con bermuda",
-    precio: "$115.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 46,
-    nombre: "Pijama",
-    descripcion: "Batola básica",
-    precio: "$85.800",
-    imagen: "",
-    link: "/ShopSingle",
-  },
-  {
-    id: 47,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 48,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con pantalón clásico ",
-    precio: "175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 49,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 50,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 51,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 52,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 53,
-    nombre: "Servilleteros",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 54,
-    nombre: "Servilleteros",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 55,
-    nombre: "Delantal",
-    precio: "$69.900",
-    iimagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 56,
-    nombre: "Delantal ",
-    precio: "$69.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 57,
-    nombre: "Manteles",
-    precio: "$139.900",
-    precio: "$299.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 58,
-    nombre: "Manteles",
-    precio: "$139.900",
-    a: 299.9,
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 59,
-    nombre: "Coge ollas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 60,
-    nombre: "Coge ollas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 61,
-    nombre: "Individuales",
-    precio: "$19.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 62,
-    nombre: "Bolso pícni",
-    precio: "$79.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 63,
-    nombre: "Bolso playero en cascara de arroz",
-    precio: "$89.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 64,
-    nombre: "Cojines",
-    precio: "$59.900",
-    imimagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 65,
-    nombre: "Sandalias",
-    precio: "$89.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-];
 app.use(cors());
+app.use(express.json());
 
-app.get("/api/productos", (req, res) => {
-  const { nombre, precioMin, precioMax } = req.query;
-
-  // Aplicar filtros según los parámetros recibidos
-  let productosFiltrados = productos;
-
-  if (nombre) {
-    productosFiltrados = productosFiltrados.filter(
-      producto => producto.name.toLowerCase().includes(nombre.toLowerCase())
-    );
-  }
-
-  if (precioMin) {
-    productosFiltrados = productosFiltrados.filter(
-      producto => producto.price >= parseFloat(precioMin)
-    );
-  }
-
-  if (precioMax) {
-    productosFiltrados = productosFiltrados.filter(
-      producto => producto.price <= parseFloat(precioMax)
-    );
-  }
-
-  res.json(productosFiltrados);
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'home'
 });
 
-app.use("/", express.static("tytHome"));
+db.connect(err => {
+  if (err) throw err;
+  console.log('Conectado a la base de datos');
+});
+
+// Middleware para servir archivos estáticos (imágenes)
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
+// Ruta de la raíz
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la API de productos');
+});
+
+// productos
+app.get('/api/productos', (req, res) => {
+  const sql = 'SELECT * FROM productos';
+  db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// productos id para shopSingle
+app.get('/api/productos/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = 'SELECT * FROM productos WHERE id = ?';
+  db.query(sql, [id], (err, results) => {
+    if (err) throw err;
+    if (results.length > 0) {
+      res.json(results[0]);
+    } else {
+      res.status(404).json({ message: 'Producto no encontrado' });
+    }
+  });
+});
+
+// Obtener productos por categoría
+app.get('/api/productos/categoria/:nombre', (req, res) => {
+  const { nombre } = req.params;
+  const sql = 'SELECT * FROM productos WHERE categoria_id = (SELECT id FROM categorias WHERE nombre = ?)';
+  db.query(sql, [nombre], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// Obtener productos por colecciones
+app.get('/api/productos/coleccion/:nombre', (req, res) => {
+  const { nombre } = req.params;
+  const sql = 'SELECT * FROM productos WHERE coleccion_id = (SELECT id FROM colecciones WHERE nombre = ?)';
+  db.query(sql, [nombre], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// Ruta para agregar una suscripción
+app.post('/api/suscripciones', (req, res) => {
+  const { email } = req.body;
+  
+  console.log('Datos recibidos:', req.body);  // Mensaje de depuración
+
+  if (!email) {
+    return res.status(400).json({ message: 'El correo electrónico es obligatorio' });
+  }
+
+  const sql = 'INSERT INTO suscripciones (email) VALUES (?)';
+  db.query(sql, [email], (err, results) => {
+    if (err) {
+      console.error('Error al agregar la suscripción:', err);
+      return res.status(500).json({ message: 'Error al agregar la suscripción' });
+    }
+    console.log('Suscripción agregada:', results);  // Mensaje de depuración
+    res.status(201).json({ message: 'Suscripción agregada con éxito' });
+  });
+});
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
-

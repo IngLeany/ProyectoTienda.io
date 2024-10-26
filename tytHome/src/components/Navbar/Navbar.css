@@ -144,3 +144,55 @@
     display: block; /* Oculta el dropdown en hover en móviles */
   }
 }
+
+/* Estilos para el formulario */
+.search-form {
+  display: flex;
+  align-items: center;
+  max-width: 500px; /* Ajusta el tamaño máximo del formulario */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 25px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Color de fondo claro */
+  padding: 1px; /* Espaciado interno */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos para el campo de entrada */
+.search-form input {
+  flex: 1; /* El campo de entrada ocupa el espacio restante */
+  border: none; /* Sin borde en el campo de entrada */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  font-size: 13px; /* Tamaño del texto */
+  outline: none; /* Sin borde al enfocarse */
+  margin-right: 5px; /* Espacio entre el campo de entrada y el botón */
+}
+
+/* Estilos para el botón */
+.search-form button {
+  background-color: #2e2d2de5; /* Color de fondo del botón */
+  border: none; /* Sin borde */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  color: white; /* Color del texto del botón */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  display: flex; /* Alinea el icono dentro del botón */
+  align-items: center; /* Centra el icono verticalmente */
+}
+
+/* Estilos para el ícono dentro del botón */
+.search-form button .fa-search {
+  font-size: 18px; /* Tamaño del ícono */
+}
+
+/* Efecto hover para el botón */
+.search-form button:hover {
+  background-color: #2e2d2de5; /* Color de fondo del botón al pasar el cursor */
+}
+
+/* Efecto focus para el campo de entrada */
+.search-form input:focus {
+  border: 1px solid #2e2d2de5; /* Borde azul al enfocar */
+  box-shadow: 0 0 3px rgba(42, 42, 43, 0.5); /* Sombra azul sutil */
+}

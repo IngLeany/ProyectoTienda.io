@@ -1,24 +1,140 @@
+/* ShopSingle.css */
 
-.site-wrap {
-    /* Estilos para el contenedor principal */
-  }
-  
-  .bg-light {
-    /* Estilos para la barra de navegación */
-  }
-  
-  .site-section {
-    /* Estilos para las secciones de contenido */
-  }
-  
-  /* Estilos específicos para los detalles del producto */
-  .text-black {
-    /* Estilos para textos negros */
-  }
-  
-  .img-fluid {
-    /* Estilos para imágenes fluidas */
-  }
-  
-  /* Agrega más estilos según necesites para los diferentes elementos del componente */
-  
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.text-black {
+  color: #000;
+}
+
+.text-secondary {
+  color: #6c757d;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.site-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col-md-6 {
+  width: 50%;
+  padding: 0 15px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.banner-button {
+  background-color: #a87e2ee5;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.banner-button:hover {
+  background-color: #a87e2ee5;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.mr-3 {
+  margin-right: 1rem;
+}
+
+.mx-2 {
+  margin: 0 0.5rem;
+}
+
+.py-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-prepend,
+.input-group-append {
+  display: flex;
+}
+
+.btn-outline-primary {
+  border-color:#a87e2ee5;
+  color: #a87e2ee5;
+}
+
+.btn-outline-primary:hover {
+  background-color: #a87e2ee5;
+  color: #fff;
+}
+
+.js-btn-minus,
+.js-btn-plus {
+  padding: 0.375rem 0.75rem;
+  font-size: 1.25rem;
+}
+
+input[type="text"] {
+  text-align: center;
+  padding: 0.375rem 0.75rem;
+}
+
+a {
+  color: #a87e2ee5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+label {
+  cursor: pointer;
+}

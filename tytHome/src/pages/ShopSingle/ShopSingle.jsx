@@ -1,590 +1,69 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import imagenes from "../../Barrel/Barrel";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { FooterHome } from "../../components/FooterHome/FooterHome";
 import { FaWhatsapp } from "react-icons/fa";
-
-import "./ShopSingle.css"; // Asegúrate de crear un archivo CSS para estilos específicos si es necesario.
-
-
-const productos = [
-  // Lista de productos (copiada de Tienda.jsx para referencia)
-  {
-    id: 1,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas strapless",
-    precio: "$98.900",
-    precioUSD: "$0.024",
-    imagen: imagenes.vestidodebañodospiezas,
-    categoria: "IKA(SWIMSUITS)",
-    coleccion: "Mixtura Tropical",
-  },
-  {
-    id: 2,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas con dorado",
-    precio: "$119.900",
-    imagen: imagenes.vestidodebañodospiezacondorado,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 3,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezass strapless",
-    precio: "$98.500",
-    imagen: imagenes.vestidodebañodospiezasstrapless,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 4,
-    nombre: "Vestido de baño",
-    descripcion: "Dos piezas con moño",
-    precio: "$98.000",
-    imagen: imagenes.cuatro,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 5,
-    nombre: "Pareo",
-    precio: "$185.900",
-    imagen: imagenes.cuatro,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 6,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza",
-    precio: "$98.5oo",
-    imagen: imagenes.cinco,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 7,
-    nombre: "Pareo",
-    precio: "$185.000",
-    imagen: imagenes.cinco,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 8,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza strapless con dorado",
-    precio: "$85.900",
-    imagen: imagenes.seis,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 9,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza con dorado",
-    precio: "$98.500",
-    imagen: imagenes.siete,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 10,
-    nombre: "Vestido de baño",
-    descripcion: "Dos pieza rojo con dorado",
-    precio: "$98.500",
-    imagen: imagenes.ocho,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 11,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón",
-    precio: "$130.000",
-    imagen: imagenes.nueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 12,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.nueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 13,
-    nombre: "Vestido",
-    descripcion: "Largo",
-    precio: "$80.000",
-    imagen: imagenes.diez,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 14,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón",
-    precio: "$130.900",
-    imagen: imagenes.once,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 15,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.doce,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 16,
-    nombre: "Conjunto",
-    descripcion: "Croptop y pantalón aladino",
-    precio: "$130.900",
-    imagen: imagenes.trece,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 17,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.catorce,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 18,
-    nombre: "Conjunto",
-    descripcion: "Croptop y falda",
-    precio: "$130.000",
-    imagen: imagenes.quince,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 19,
-    nombre: "Kimono",
-    descripcion: "Manga larga",
-    precio: "$110.000",
-    imagen: imagenes.diezyseis,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 20,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezysiete,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 21,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezyocho,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 22,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.diezynueve,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 23,
-    nombre: "Conjunto",
-    descripcion: "Croptop, pantalón, short y camisa",
-    precio: "$298.800",
-    imagen: imagenes.veinte,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 24,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con short clásico",
-    precio: "$192.800",
-    imagen: imagenes.ventiuno,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 25,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con capri",
-    precio: "$196.800",
-    imagen: imagenes.veintidos,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 26,
-    nombre: "Pijama",
-    descripcion: "Camiseta manga larga con pantalón largo",
-    precio: "$214.800",
-    imagen: imagenes.pijama,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 27,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con pantalón largo",
-    precio: "$180.800",
-    imagen: imagenes.pijama1,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 28,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con short envolvente",
-    precio: "$192.800",
-    imagen: imagenes.pijama3,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 29,
-    nombre: "Kimono",
-    precio: "$170.800",
-    imagen: imagenes.kimono,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 30,
-    nombre: "Batola Básica",
-    precio: "$220.800",
-    imagen: imagenes.batola,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 31,
-    nombre: "Batola japonesa",
-    precio: "$193.800",
-    imagen: imagenes.batola2,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 32,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con pantalón clásico",
-    precio: "$175.800",
-    imagen: imagenes.pijamaotono,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-    colecciones: "Otoño"
-  },
-  {
-    id: 33,
-    nombre: "Batola",
-    descripcion: "básica",
-    precio: "$135.800",
-    imagen: imagenes.otonopijama,
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-    colecciones: "Otono"
-  },
-  {
-    id: 34,
-    nombre: "Pijama niña",
-    descripcion: "blusa clásica con short clásico",
-    precio: "$65.8OO",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 35,
-    nombre: "Pijama niña",
-    descripcion: "Blusa clásica con short clásico",
-    precio: "$65.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 36,
-    nombre: "Pijama niña/niño",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$120.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 37,
-    nombre: "Pijama niña/niño",
-    descripcion: "camisa clásica con pantalón clásico",
-    precio: "$120.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 38,
-    nombre: "Pijama",
-    descripcion: "Blusa básica con short",
-    precio: "$139.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 39,
-    nombre: "Pijama ",
-    descripcion: "Camisa básica con pantalón clásico ",
-    precio: "$145.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 40,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$152.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 41,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$152.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 42,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 43,
-    nombre: "Levantadora",
-    precio: "$111.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 44,
-    nombre: "Pijama",
-    descripcion: "Camisa clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 45,
-    nombre: "Pijama hombre",
-    descripcion: "Camiseta con bermuda",
-    precio: "$115.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 46,
-    nombre: "Pijama",
-    descripcion: "Batola básica",
-    precio: "$85.800",
-    imagen: "",
-    link: "/ShopSingle",
-  },
-  {
-    id: 47,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con pantalón clásico",
-    precio: "$175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 48,
-    nombre: "Pijama",
-    descripcion: "Camiseta clásica con pantalón clásico ",
-    precio: "175.800",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 49,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 50,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 51,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 52,
-    nombre: "Servilletas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 53,
-    nombre: "Servilleteros",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 54,
-    nombre: "Servilleteros",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 55,
-    nombre: "Delantal",
-    precio: "$69.900",
-    iimagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 56,
-    nombre: "Delantal ",
-    precio: "$69.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 57,
-    nombre: "Manteles",
-    precio: "$139.900",
-    precio: "$299.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 58,
-    nombre: "Manteles",
-    precio: "$139.900",
-    a: 299.9,
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 59,
-    nombre: "Coge ollas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 60,
-    nombre: "Coge ollas",
-    precio: "$14.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 61,
-    nombre: "Individuales",
-    precio: "$19.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 62,
-    nombre: "Bolso pícni",
-    precio: "$79.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 63,
-    nombre: "Bolso playero en cascara de arroz",
-    precio: "$89.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 64,
-    nombre: "Cojines",
-    precio: "$59.900",
-    imimagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-  {
-    id: 65,
-    nombre: "Sandalias",
-    precio: "$89.900",
-    imagen: "",
-    link: "/ShopSingle",
-    categoria: "IKA(SWIMSUITS)",
-  },
-];
+import "./ShopSingle.css";
 
 export const ShopSingle = () => {
   const { id } = useParams();
-  const producto = productos.find(p => p.id === parseInt(id));
+  const navigate = useNavigate();
+  const [producto, setProducto] = useState(null);
+  const [productos, setProductos] = useState([]);
+  const [tallaSeleccionada, setTallaSeleccionada] = useState(''); // Estado para la talla seleccionada
 
-  if (!producto) {
-    return <p>Producto no encontrado</p>;
-  }
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/productos/${id}`)
+      .then(response => {
+        setProducto(response.data);
+      })
+      .catch(error => {
+        console.error('Hubo un error al obtener el producto!', error);
+      });
+
+    axios.get('http://localhost:5000/api/productos')
+      .then(response => {
+        setProductos(response.data);
+      })
+      .catch(error => {
+        console.error('Hubo un error al obtener los productos!', error);
+      });
+  }, [id]);
+
+  // Manejar cambio en la selección de talla
+  const manejarCambioTalla = (e) => {
+    setTallaSeleccionada(e.target.value);
+  };
+
+  //LINK PARA WHAT
+  const crearLinkWhatsapp = (nombre, descripcion, imagenUrl, tallaSeleccionada) => {
+    const mensaje = `¡Hola! Estoy interesado/a en el ${nombre}. \nDescripción: ${descripcion}. \nTalla: ${tallaSeleccionada}. \nPuedes ver la imagen aquí: ${imagenUrl}.`;
+    const encodedMensaje = encodeURIComponent(mensaje);
+    return `https://wa.me/+573227598775?text=${encodedMensaje}`;
+  };
+
+  //LINK PARA CARRITO
+  const añadirAlCarrito = () => {
+    if (!tallaSeleccionada) {
+      alert("Por favor, selecciona una talla.");
+      return;
+    }
+  
+    const carrito = JSON.parse(localStorage.getItem('productosEnCarrito')) || [];
+    const productoExistente = carrito.find(item => item.id === producto.id && item.talla === tallaSeleccionada);
+  
+    if (productoExistente) {
+      productoExistente.cantidad = (productoExistente.cantidad || 1) + 1;
+    } else {
+      carrito.push({ ...producto, talla: tallaSeleccionada, cantidad: 1 });
+    }
+  
+    localStorage.setItem('productosEnCarrito', JSON.stringify(carrito));
+    navigate('/Cart');
+  };
+  
 
   return (
     <>
@@ -593,32 +72,156 @@ export const ShopSingle = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12 mb-0">
+              <a href="/">Inicio</a> <span className="mx-2 mb-0">/</span>{" "}
               <a href="/tienda">Tienda</a> <span className="mx-2 mb-0">/</span>{" "}
-              <strong className="text-black">Shop-Single</strong>
+              <strong className="text-black">Detalle del Producto</strong>
             </div>
           </div>
         </div>
       </div>
-      <div className="site-section py-5">
+
+      <div className="site-section">
         <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <img
-                src={producto.imagen}
-                alt={producto.nombre}
-                className="img-fluid"
-              />
+          <div className="row mb-5">
+            <div className="col-lg-6">
+              {producto && (
+                <div className="block-4 text-center border">
+                  <figure className="block-4-image">
+                    <img
+                      src={`http://localhost:5000/images/${producto.imagen}`}
+                      alt={producto.nombre}
+                      className="img-fluid"
+                    />
+                  </figure>
+                  <div className="block-4-text p-4">
+                    <h3>{producto.nombre}</h3>
+                    <p className="mb-0">{producto.descripcion}</p>
+                    <p className="text-secondary font-weight-bold">
+                      Precio: {producto.precio}
+                    </p>
+                    {producto.precioUSD && (
+                      <p className="text-secondary font-weight-bold">
+                        Precio USD: {producto.precioUSD}
+                      </p>
+                    )}
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-1 d-flex">
+                      <label htmlFor="option-sm" className="d-flex mr-3 mb-3">
+                        <span className="d-inline-block mr-2">
+                          <input
+                            type="radio"
+                            id="option-sm"
+                            name="shop-sizes"
+                            value="S"
+                            checked={tallaSeleccionada === 'S'}
+                            onChange={manejarCambioTalla}
+                          />
+                        </span>
+                        <span className="d-inline-block text-black">S</span>
+                      </label>
+                      <label htmlFor="option-md" className="d-flex mr-3 mb-3">
+                        <span className="d-inline-block mr-2">
+                          <input
+                            type="radio"
+                            id="option-md"
+                            name="shop-sizes"
+                            value="M"
+                            checked={tallaSeleccionada === 'M'}
+                            onChange={manejarCambioTalla}
+                          />
+                        </span>
+                        <span className="d-inline-block text-black">M</span>
+                      </label>
+                      <label htmlFor="option-lg" className="d-flex mr-3 mb-3">
+                        <span className="d-inline-block mr-2">
+                          <input
+                            type="radio"
+                            id="option-lg"
+                            name="shop-sizes"
+                            value="L"
+                            checked={tallaSeleccionada === 'L'}
+                            onChange={manejarCambioTalla}
+                          />
+                        </span>
+                        <span className="d-inline-block text-black">L</span>
+                      </label>
+                      <label htmlFor="option-xl" className="d-flex mr-3 mb-3">
+                        <span className="d-inline-block mr-2">
+                          <input
+                            type="radio"
+                            id="option-xl"
+                            name="shop-sizes"
+                            value="XL"
+                            checked={tallaSeleccionada === 'XL'}
+                            onChange={manejarCambioTalla}
+                          />
+                        </span>
+                        <span className="d-inline-block text-black">XL</span>
+                      </label>
+                      <label htmlFor="option-U" className="d-flex mr-3 mb-3">
+                        <span className="d-inline-block mr-2">
+                          <input
+                            type="radio"
+                            id="option-U"
+                            name="shop-sizes"
+                            value="U"
+                            checked={tallaSeleccionada === 'U'}
+                            onChange={manejarCambioTalla}
+                          />
+                        </span>
+                        <span className="d-inline-block text-black">U</span>
+                      </label>
+                    </div>
+                    <a
+                      href={crearLinkWhatsapp(producto.nombre, producto.descripcion, `http://localhost:5000/images/${producto.imagen}`, tallaSeleccionada)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaWhatsapp /> Comprar
+                    </a>
+                    <button onClick={añadirAlCarrito} className='banner-button'>
+                      Añadir al carrito
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="col-md-6">
-              <h2 className="text-black">{producto.nombre}</h2>
-              <p className="mb-4">{producto.descripcion}</p>
-              <p className="text-secondary font-weight-bold">Precio: {producto.precio}</p>
-              {producto.precioUSD && <p className="text-secondary font-weight-bold">Precio USD: {producto.precioUSD}</p>}
-              {producto.coleccion && <p className="text-secondary font-weight-bold">Colección: {producto.coleccion}</p>}
-              <a href="https://wa.me/+573227598775">
-              <FaWhatsapp />Nuestro Whatsapp
-            </a>
-              <button className="btn btn-primary">Añadir al carrito</button>
+            <div className="col-lg-6">
+              <h2 className="mb-4">Productos Destacados</h2>
+              <div className="row">
+                {productos.map((producto) => (
+                  <div
+                    key={producto.id}
+                    className="col-sm-6 col-lg-4 mb-4"
+                    data-aos="fade-up">
+                    <div className="block-4 text-center border">
+                      <figure className="block-4-image">
+                        <Link to={`/shop/${producto.id}`}>
+                          <img
+                            src={`http://localhost:5000/images/${producto.imagen}`}
+                            alt={producto.nombre}
+                            className="img-fluid"/>
+                        </Link>
+                      </figure>
+                      <div className="block-4-text p-4">
+                        <h3>
+                          <Link to={`/shop/${producto.id}`}>{producto.nombre}</Link>
+                        </h3>
+                        <p className="mb-0">{producto.descripcion}</p>
+                        <p className="text-secondary font-weight-bold">
+                          Precio: {producto.precio}
+                        </p>
+                        {producto.precioUSD && (
+                          <p className="text-secondary font-weight-bold">
+                            Precio USD: {producto.precioUSD}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -627,6 +230,3 @@ export const ShopSingle = () => {
     </>
   );
 };
-
-
-

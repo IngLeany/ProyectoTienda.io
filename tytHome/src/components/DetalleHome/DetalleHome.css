@@ -13,10 +13,28 @@
   .banner-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: rosybrown;
+    background-color: rgb(17, 11, 11);
     color: black;
     border: none;
     cursor: pointer;
     border-radius: 5px;
   }
   
+  /* Añadimos la animación a la imagen */
+.banner img {
+  width: 100%;
+  animation: zoomInOut 10s infinite;
+}
+
+/* Definimos la animación */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Aumenta el tamaño al 110% */
+  }
+  100% {
+    transform: scale(1);
+  }
+}

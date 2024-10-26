@@ -1,54 +1,65 @@
-.categoria {
-    padding: 20px;
-  }
-  
-  .categoria h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .categoria ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .categoria li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .categoria img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 20px;
-    border-radius: 8px;
-  }
-  
-  .categoria .producto-info {
-    flex: 1;
-  }
-  
-  .categoria h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .categoria p {
-    margin: 5px 0;
-  }
-  
-  .categoria a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .categoria a:hover {
-    text-decoration: underline;
-  }
-  
+.categoria-container {
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.producto-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.producto-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.producto-card h2 {
+  font-size: 1.5rem;
+  margin: 10px;
+}
+
+.producto-card p {
+  font-size: 1rem;
+  margin: 0 10px 10px;
+  color: #666;
+}
+
+.producto-card a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 10px 10px;
+  color: #a7752bea;
+  text-decoration: none;
+  border: 1px solid #a7752bea;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.producto-card a:hover {
+  background-color: #a7752bea;
+  color: #fff;
+}

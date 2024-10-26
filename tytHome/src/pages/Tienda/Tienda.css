@@ -1,18 +1,24 @@
-/* Tienda.css */
-
 /* Estilo para la imagen del producto */
+.block-4-image {
+  position: relative;
+  overflow: hidden;
+  height: 300px; 
+}
+
 .block-4-image img {
-  max-width: 100%; /* Ajusta el ancho máximo de la imagen al tamaño del contenedor */
-  height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
-  display: block; /* Asegura que la imagen se muestre como bloque para manejar correctamente el tamaño */
-  margin: 0 auto; /* Centra la imagen horizontalmente */
-  max-height: 300px; /* Establece una altura máxima para evitar que las imágenes sean demasiado grandes */
+  max-width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+  margin: 0 auto; 
+  transition: transform 0.3s ease;
 }
 
 /* Estilo para el texto del producto */
 .block-4-text {
-  background: #fff; /* Fondo blanco para el bloque de texto */
-  border: 1px solid #e5e5e5; /* Borde del bloque de texto */
+  background: #fff; 
+  border: 1px solid #e5e5e5; 
+  padding: 1.5rem;
 }
 
 /* Estilos para la sección de productos */
@@ -28,6 +34,7 @@
   border: 1px solid #e5e5e5;
   transition: transform 0.3s ease;
   overflow: hidden;
+  margin-bottom: 1.5rem; 
 }
 
 .block-4:hover {
@@ -35,21 +42,12 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.block-4-image {
-  position: relative;
-  overflow: hidden;
-}
-
 .block-4-image img {
   transition: transform 0.3s ease;
 }
 
 .block-4:hover .block-4-image img {
-  transform: scale(1.1);
-}
-
-.block-4-text {
-  padding: 1.5rem;
+  transform: scale(1.1); 
 }
 
 .block-4-text h3 a {

@@ -1,103 +1,66 @@
-import React from 'react';
-import { Navbar } from "../../components/Navbar/Navbar";
-import { FooterHome } from "../../components/FooterHome/FooterHome";
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import imagenes from '../../Barrel/Barrel';
+import { Link } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar/Navbar';
+import {FooterHome } from '../../components/FooterHome/FooterHome';
 import "./Categoria.css";
 
-// Datos de ejemplo para productos por categoría
-export const productosPorCategoria = {
-  "Pijamas / Ropa de Descanso": [
-    {
-      id: 1,
-      nombre: "Pijama",
-      descripcion: "Camiseta clásica con short clásico",
-      precio: "$192.800",
-      imagen: imagenes.pijama,
-      link: "/ShopSingle",
-      categoria: "CLOTO - River",
-    },
-    // Más productos
-  ],
-  "Vestidos de baño / Sandalias": [
-    {
-      id: 2,
-      nombre: "Vestido de baño",
-      descripcion: "Dos piezas strapless",
-      precio: "$98.900",
-      imagen: imagenes.vestidodebañodospiezas,
-      link: "/ShopSingle",
-      categoria: "IKA - Swimsuits",
-    },
-    // Más productos
-  ],
-  "Manteles / Caminos de mesa / Servilleteros / Delantales / Coge ollas / Individuales / Bolso pícnic / bolsos playeros / Cojines": [
-    {
-      id: 3,
-      nombre: "Mantel",
-      descripcion: "Mantel de lino para ocasiones especiales",
-      precio: "$120.000",
-      imagen: imagenes.mantel,
-      link: "/ShopSingle",
-      categoria: "HOME - Lenceria de casa",
-    },
-    // Más productos
-  ],
-  "Ropa de lino": [
-    {
-      id: 4,
-      nombre: "Camisa de lino",
-      descripcion: "Camisa ligera y fresca",
-      precio: "$85.000",
-      imagen: imagenes.camisaLino,
-      link: "/ShopSingle",
-      categoria: "REBECA",
-    },
-    // Más productos
-  ],
-};
-
 export const Categoria = () => {
-  const { nombre } = useParams();
-  const productosCategoria = productosPorCategoria[nombre] || [];
+  const { nombre } = useParams(); // Recupera el parámetro de la categoría desde la URL
+  const [productosCategoria, setProductosCategoria] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/productos/categoria/${encodeURIComponent(nombre)}`);
+        const data = await response.json();
+        
+        // Asegúrate de que la respuesta sea un array
+        if (Array.isArray(data)) {
+          setProductosCategoria(data);
+        } else {
+          throw new Error('Datos inesperados de la API');
+        }
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchProductos();
+  }, [nombre]);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
-    <Navbar />
-    <div className="bg-light py-3">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 mb-0">
-            <a href="/">Inicio</a> <span className="mx-2 mb-0">/</span>{" "}
-            <strong className="text-black">Categorias</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="categoria">
-      <h2>{nombre}</h2>
-      <ul>
+    <Navbar/>
+    <div className="categoria-container">
+      <h1>{nombre}</h1>
+      <div className="productos-grid">
         {productosCategoria.length > 0 ? (
-          productosCategoria.map((producto, index) => (
-            <li key={index}>
-              <img src={producto.imagen} alt={producto.nombre} />
-              <div className="producto-info">
-                <h3>{producto.nombre}</h3>
-                <p>{producto.descripcion}</p>
-                <p>{producto.precio}</p>
-                <a href={producto.link}>Ver más</a>
-              </div>
-            </li>
+          productosCategoria.map((producto) => (
+            <div key={producto.id} className="producto-card">
+              <img src={`http://localhost:5000/images/${producto.imagen}`} alt={producto.nombre} />
+              <h2>{producto.nombre}</h2>
+              <p>{producto.descripcion}</p>
+              <p className="text-secondary font-weight-bold">
+                      Precio {producto.precio}</p>
+                    {producto.precioUSD && (
+                      <p className="text-secondary font-weight-bold">
+                        Precio USD {producto.precioUSD}</p>
+                    )}
+              <Link to={`/Tienda`}>Ver más</Link>
+            </div>
           ))
         ) : (
-          <li>No hay productos en esta categoría.</li>
+          <p>No hay productos disponibles en esta categoría.</p>
         )}
-      </ul>
+      </div>
     </div>
-    <FooterHome />
+    <FooterHome/>
     </>
-
   );
 };
-
-export default Categoria;

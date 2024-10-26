@@ -1,0 +1,161 @@
+/* Checkout.css */
+
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #0e0d0dea;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Breadcrumb */
+.bg-light {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+.text-black {
+    color: #000;
+}
+
+/* Contenedor Principal */
+.container {
+    max-width: 1400px; /* Aumenta el ancho máximo del contenedor */
+    margin: 0 auto;
+    padding: 0 15px; /* Agrega un poco de padding para el contenedor */
+}
+
+/* Fila Principal */
+.row {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    gap: 30px; /* Espacio entre columnas */
+}
+
+/* Columna del Formulario */
+.col-md-8 {
+    flex: 0 0 70%; /* Ajusta el tamaño de la columna para el formulario */
+    max-width: 70%; /* Asegúrate de que el formulario ocupe más espacio */
+}
+
+/* Columna de la Tabla del Carrito */
+.col-md-4 {
+    flex: 0 0 30%; /* Ajusta el tamaño de la columna para la tabla del carrito */
+    max-width: 30%; /* Asegúrate de que la tabla ocupe el espacio restante */
+}
+
+/* Formulario de Checkout */
+.checkout-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Asegúrate de que el formulario ocupe todo el ancho disponible */
+    max-width: 900px; /* Ajusta según lo necesario */
+    margin: 0 auto; /* Centra horizontalmente el formulario */
+}
+
+.form-group {
+    margin-bottom: 25px; /* Aumenta el espacio entre los campos del formulario */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 15px; /* Aumenta el padding para más espacio dentro de los campos */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #0e0d0dea;
+    outline: none;
+}
+
+.btn-primary {
+    padding: 15px 25px; /* Aumenta el padding del botón para mejor apariencia */
+}
+
+/* Tabla del Carrito */
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.table-bordered td, 
+.table-bordered th {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.table-bordered th {
+    background-color: #f8f9fa;
+    text-align: left;
+}
+
+.product-thumbnail img {
+    max-width: 100px;
+    border-radius: 4px;
+}
+
+.product-name h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.btn-outline-primary {
+    border-color: #0e0d0dea;
+    color: #0e0d0dea;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0e0d0dea;
+    color: #fff;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.input-group .btn {
+    border-radius: 0;
+}
+
+/* Resumen del Carrito */
+h3.text-black {
+    color: #000;
+    font-size: 18px;
+}
+
+h3.text-uppercase {
+    text-transform: uppercase;
+    margin-top: 20px;
+}
